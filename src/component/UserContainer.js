@@ -46,7 +46,7 @@ const UserContainer = () => {
   console.log(allUserCategory);
   return id === null ? (
     <div className="UserContainer">
-      <h1>UserContainer</h1>
+      <h1>React Ui</h1>
       <FormContainer data={id} />
 
       <br />

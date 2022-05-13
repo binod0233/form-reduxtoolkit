@@ -7,21 +7,12 @@ import Paper from "@mui/material/Paper";
 import { Button, Typography, Grid } from "@mui/material";
 
 const SignUpSchema = Yup.object().shape({
-  layout: Yup.string()
-    .min(2, "Must be longer than 2 characters")
-    .max(10, "Name is too long")
-    .required("Required"),
+  layout: Yup.string().required("Required"),
   name: Yup.string()
     .min(2, "Must be longer than 2 characters")
     .max(10, "Name is too long")
     .required("Required"),
-  //   capacity: Yup.string().capacity("Invalid capacity address"),
-  file: Yup.mixed(),
-  //   status: Yup.string().required("No status provided."),
-  //   passwordConfirmation: Yup.string().oneOf(
-  //     [Yup.ref("status"), null],
-  //     "Passwords must match"
-  //   ),
+  capacity: Yup.number().required("A  number is required"),
 });
 const FormContainer = (props) => {
   const dispatch = useDispatch();
@@ -57,9 +48,9 @@ const FormContainer = (props) => {
               status: "",
             }}
             validationSchema={SignUpSchema}
-            onSubmit={async (values, onSubmitProps) => {
+            onSubmit={async (values, { resetForm }) => {
               var file = values.Image;
-              onSubmitProps.resetForm();
+              resetForm({ values: "" });
               const convertBase64 = (file) => {
                 return new Promise((resolve, reject) => {
                   const fileReader = new FileReader();
@@ -98,6 +89,7 @@ const FormContainer = (props) => {
                     base64
                   )
                 );
+                window.location.reload(false);
               }
               console.log("base64sssssss", base64);
             }}
@@ -132,7 +124,7 @@ const FormContainer = (props) => {
                 <label htmlFor="name"> Name:</label>
                 <Field
                   name="name"
-                  placeholder="Sharma"
+                  placeholder="Binod"
                   type="name"
                   style={{
                     width: "25%",
@@ -214,7 +206,11 @@ const FormContainer = (props) => {
                 >
                   Submit
                 </Button>
-                <Button variant="contained" color="error">
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => window.location.reload(false)}
+                >
                   Cancel
                 </Button>
               </Form>

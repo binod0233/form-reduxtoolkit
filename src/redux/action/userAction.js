@@ -5,6 +5,7 @@ import {
   UPDATE_USERCATEGORY,
 } from "./userType";
 const axios = require("axios");
+const api = process.env.REACT_APP_URL;
 
 export const addUserCategory = (layout, name, capacity, status, image) => {
   console.log("addUserCategory", layout, name, capacity, status, image);
@@ -14,7 +15,8 @@ export const addUserCategory = (layout, name, capacity, status, image) => {
     status = "false";
   }
   var OPTION = {
-    url: "http://localhost:3000/category",
+    url: `${api}`,
+
     method: "POST",
     data: { layout, name, capacity, status, image },
     headers: {
@@ -33,9 +35,11 @@ export const addUserCategory = (layout, name, capacity, status, image) => {
 };
 
 export const fetchUserCategory = () => {
+  console.log("fetchUserCategory", api);
   return function (dispatch) {
     var OPTION = {
-      url: "http://localhost:3000/category",
+      url: `${api}`,
+
       method: "GET",
       headers: {
         "Content-Type": "application/json",
