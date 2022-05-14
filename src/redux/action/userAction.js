@@ -8,6 +8,7 @@ const axios = require("axios");
 const api = process.env.REACT_APP_URL;
 
 export const addUserCategory = (layout, name, capacity, status, image) => {
+  console.log(layout, name, capacity, status, image);
   if (status === true) {
     var stat = "true";
   } else {
