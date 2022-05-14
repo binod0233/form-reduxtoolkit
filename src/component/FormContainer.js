@@ -10,7 +10,7 @@ const SignUpSchema = Yup.object().shape({
   layout: Yup.string().required("Required"),
   name: Yup.string()
     .min(2, "Must be longer than 2 characters")
-    .max(10, "Name is too long")
+    .max(20, "Name is too long")
     .required("Required"),
   capacity: Yup.number().required("A  number is required"),
 });
@@ -44,7 +44,7 @@ const FormContainer = (props) => {
               layout: "",
               name: "",
               image: null,
-              capacity: NaN,
+              capacity: "",
               status: "",
             }}
             validationSchema={SignUpSchema}
@@ -65,7 +65,6 @@ const FormContainer = (props) => {
                   };
                 });
               };
-              console.log("Sign up", values);
               const base64 = await convertBase64(file);
               if (props.data != null) {
                 dispatch(
@@ -78,7 +77,7 @@ const FormContainer = (props) => {
                     base64
                   )
                 );
-                props.data = null;
+                window.location.reload(false);
               } else {
                 dispatch(
                   addUserCategory(
@@ -91,7 +90,6 @@ const FormContainer = (props) => {
                 );
                 window.location.reload(false);
               }
-              console.log("base64sssssss", base64);
             }}
             render={(formProps) => (
               <Form component={Paper}>

@@ -43,7 +43,6 @@ const UserContainer = () => {
 
   const allUserCategory = useSelector((state) => state.user.userCategory);
 
-  console.log(allUserCategory);
   return id === null ? (
     <div className="UserContainer">
       <h1>React Ui</h1>

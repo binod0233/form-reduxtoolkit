@@ -8,17 +8,16 @@ const axios = require("axios");
 const api = process.env.REACT_APP_URL;
 
 export const addUserCategory = (layout, name, capacity, status, image) => {
-  console.log("addUserCategory", layout, name, capacity, status, image);
   if (status === true) {
-    status = "true";
+    var stat = "true";
   } else {
-    status = "false";
+    stat = "false";
   }
   var OPTION = {
     url: `${api}`,
 
     method: "POST",
-    data: { layout, name, capacity, status, image },
+    data: { layout, name, capacity, status: stat, image },
     headers: {
       "Content-Type": "application/json",
     },
@@ -35,7 +34,6 @@ export const addUserCategory = (layout, name, capacity, status, image) => {
 };
 
 export const fetchUserCategory = () => {
-  console.log("fetchUserCategory", api);
   return function (dispatch) {
     var OPTION = {
       url: `${api}`,
@@ -66,9 +64,8 @@ export const getUserCategory = (userCategory) => {
 };
 
 export const deleteUserCategory = (id) => {
-  console.log("deleteUserCategory", id);
   var OPTION = {
-    url: "http://localhost:3000/category/" + id,
+    url: `${api}` + id,
     method: "DELETE",
     data: { id },
     headers: {
@@ -96,16 +93,16 @@ export const updateUserCategory = (
   status,
   image
 ) => {
-  console.log("updateUserCategory", id, layout, name, capacity, status, image);
   if (status === true) {
-    status = "true";
+    var stat = "true";
   } else {
-    status = "false";
+    stat = "false";
   }
   var OPTION = {
-    url: "http://localhost:3000/category/" + id,
+    url: `${api}` + id,
+
     method: "PUT",
-    data: { layout, name, capacity, status, image },
+    data: { layout, name, capacity, status: stat, image },
     headers: {
       "Content-Type": "application/json",
     },

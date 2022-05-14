@@ -4,11 +4,11 @@ import store from "./redux/store";
 import MainContainer from "./component/MainContainer";
 function App() {
   return (
-    <Provider store={store}>
-      <div className="App">
+    <div className="App">
+      <Provider store={store}>
         <MainContainer />
-      </div>
-    </Provider>
+      </Provider>
+    </div>
   );
 }
 
