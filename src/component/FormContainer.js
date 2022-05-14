@@ -77,7 +77,7 @@ const FormContainer = (props) => {
                     base64
                   )
                 );
-                // window.location.reload(false);
+                window.location.reload(false);
               } else {
                 dispatch(
                   addUserCategory(
@@ -88,7 +88,7 @@ const FormContainer = (props) => {
                     base64
                   )
                 );
-                // window.location.reload(false);
+                window.location.reload(false);
               }
             }}
             render={(formProps) => (
