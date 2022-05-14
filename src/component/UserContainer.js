@@ -37,7 +37,7 @@ const UserContainer = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(fetchUserCategory());
-    }, 1000);
+    }, 100);
     return () => clearInterval(interval);
   }, [dispatch]);
 
